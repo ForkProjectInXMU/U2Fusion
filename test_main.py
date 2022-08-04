@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import scipy.ndimage
 # from Net import Generator, WeightNet
-from scipy.misc import imread, imsave
+from imageio import imread, imsave
 import scipy.io as scio
 from skimage import transform, data
 from glob import glob
@@ -19,10 +19,10 @@ import matplotlib.image as mpimg
 MODEL_SAVE_PATH = './model/model.ckpt'
 
 
-output_path='./results/vis-ir/TNO/'
-path = './test_imgs/vis-ir/TNO/'
-path1 = path + 'vis/'
-path2 = path + 'ir/'
+# output_path='./results/vis-ir/TNO/'
+# path = './test_imgs/vis-ir/TNO/'
+# path1 = path + 'vis/'
+# path2 = path + 'ir/'
 
 # output_path='./results/vis-ir/RoadScene/'
 # path = './test_imgs/vis-ir/RoadScene/'
@@ -39,10 +39,10 @@ path2 = path + 'ir/'
 # path1 = path + 'oe/'
 # path2 = path + 'ue/'
 
-# output_path='./results/multi-exposure/dataset2/'
-# path = './test_imgs/multi-exposure/dataset2/'
-# path1 = path + 'oe/'
-# path2 = path + 'ue/'
+output_path='./results/MEFB/'
+path = 'C:/data/MEFB_transMEF/'
+path1 = path + 'oe/'
+path2 = path + 'ue/'
 
 # output_path='./results/multi-focus/'
 # path = './test_imgs/multi-focus/'
@@ -109,8 +109,8 @@ def main():
             name = name.split('.')[-2]
             print("\033[0;33;40m[" + str(pic_num) + "/" + str(len(files)) + "]: " + name + ".png" + "\033[0m")
 
-            img1 = imread(path1 + file.split('/')[-1], flatten=False) / 255.0
-            img2 = imread(path2 + file.split('/')[-1], flatten=False) / 255.0
+            img1 = imread(path1 + file.split('/')[-1]) / 255.0
+            img2 = imread(path2 + file.split('/')[-1]) / 255.0
 
             Shape1 = img1.shape
             print("shape1:", Shape1)
